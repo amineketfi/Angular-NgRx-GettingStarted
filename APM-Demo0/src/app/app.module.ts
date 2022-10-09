@@ -17,6 +17,9 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
 /* Feature Modules */
 import { UserModule } from './user/user.module';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
@@ -25,7 +28,13 @@ import { StoreModule } from '@ngrx/store';
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
     UserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}) // two empty objects, 1) Refrence the reducer / 2) optional cofiguration
+    StoreModule.forRoot({}, {}), // two empty objects, 1) Refrence the reducer / 2) optional cofiguration
+    StoreDevtoolsModule.instrument({
+      name: 'APM Demo App Devtools',
+      maxAge: 20,
+      logOnly: environment.production
+    }),
+    EffectsModule.forRoot([])
   ],
   declarations: [
     AppComponent,
