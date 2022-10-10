@@ -12,6 +12,8 @@ import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/product.reducer';
 import { ProductEffects } from './state/product.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { ReactiveFormsModule } from '@angular/forms';
+
 const productRoutes: Routes = [
   { path: '', component: ProductShellComponent }
 ];
@@ -21,7 +23,8 @@ const productRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(productRoutes),
     StoreModule.forFeature('products', productReducer),
-    EffectsModule.forFeature([ProductEffects])
+    EffectsModule.forFeature([ProductEffects]),
+    ReactiveFormsModule
   ],
   declarations: [
     ProductShellComponent,

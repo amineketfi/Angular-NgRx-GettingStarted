@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -16,7 +16,7 @@ import * as ProductActions from '../state/product.actions';
 export class ProductEditComponent implements OnInit {
   pageTitle = 'Product Edit';
   errorMessage = '';
-  productForm: UntypedFormGroup;
+  productForm: FormGroup;
 
   product: Product | null;
 
@@ -26,7 +26,7 @@ export class ProductEditComponent implements OnInit {
   private genericValidator: GenericValidator;
 
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private productService: ProductService,
     private store: Store<IState>
     ) {
